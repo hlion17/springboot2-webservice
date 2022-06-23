@@ -2,7 +2,7 @@ package me.hlion.book.dto;
 
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class HelloResponseDtoTest {
 
@@ -16,10 +16,8 @@ public class HelloResponseDtoTest {
         HelloResponseDto dto = new HelloResponseDto(name, amount);
 
         // Then
-        assertEquals(name, dto.getName());
-        assertEquals(amount, dto.getAmount());
-        org.assertj.core.api.Assertions.assertThat(dto.getName()).isEqualTo(name);
-        org.assertj.core.api.Assertions.assertThat(dto.getAmount()).isEqualTo(amount);
+        assertThat(dto.getName()).isEqualTo(name);
+        assertThat(dto.getAmount()).isEqualTo(amount);
 
     }
 }
