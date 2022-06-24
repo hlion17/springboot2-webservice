@@ -6,6 +6,22 @@ branches:
   only:
     - master
 
+before_deploy:
+  - zip -r springboot2-webservice
+  - mkdir -p deploy
+  - mv springboot2-webservice.zip deploy/springboot2-webservice.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # In Travis repo setting
+    secret_access_key: $AWS_SECRET_KEY # In Travis repo setting
+    bucket: hlion0626-build # s3 bucket
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일 접근을 private
+    local_dir: deploy # before_deploy 에서 생성한 디렉토리
+    wait-until-deploy: true
+
 # Travis CI 서버의 Home
 cache:
   directories:
@@ -18,3 +34,5 @@ notifications:
   email:
     recipients:
       - hlion0626@gmail.com
+
+
