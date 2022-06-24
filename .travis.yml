@@ -7,7 +7,7 @@ branches:
     - master
 
 before_deploy:
-  - zip -r springboot2-webservice
+  - zip -r springboot2-webservice *
   - mkdir -p deploy
   - mv springboot2-webservice.zip deploy/springboot2-webservice.zip
 
