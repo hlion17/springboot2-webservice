@@ -2,6 +2,7 @@
 
 ABSPATH=$(readlink -f $0)
 ABSDIR=$(dirname $ABSPATH)
+echo "변수 확인: ${ABSDIR}"
 source ${ABSDIR}/profile.sh
 
 REPOSITORY=/home/ec2-user/app/step3
